@@ -1,0 +1,79 @@
+@startuml
+interface work4.iterator.Aggregate {
+~ Iterator createIterator()
+}
+
+class work4.chain_of_responsibility.AuthorizationHandler {
+- Handler nextHandler
++ void handle(Document)
++ void setNextHandler(Handler)
+}
+
+
+class work4.iterator.ConcreteAggregate {
+- List<Object> collection
++ void addElement(Object)
++ Iterator createIterator()
+}
+
+
+class work4.chain_of_responsibility.FormatHandler {
+- Handler nextHandler
++ void handle(Document)
++ void setNextHandler(Handler)
+}
+
+
+class work4.chain_of_responsibility.SubmissionTimeHandler {
+- Handler nextHandler
++ void handle(Document)
++ void setNextHandler(Handler)
+}
+
+
+class work4.chain_of_responsibility.ConfidentialityHandler {
+- Handler nextHandler
++ void handle(Document)
++ void setNextHandler(Handler)
+}
+
+
+class work4.chain_of_responsibility.Document {
+~ String name
+~ String format
+~ String author
+~ boolean confidential
+~ LocalDateTime submissionTime
+}
+
+class work4.Main {
++ {static} void main(String[])
+}
+
+class work4.iterator.ConcreteIterator {
+- List<Object> collection
+- int index
++ boolean hasNext()
++ Object next()
+}
+
+
+interface work4.iterator.Iterator {
+~ boolean hasNext()
+~ Object next()
+}
+
+interface work4.chain_of_responsibility.Handler {
+~ void handle(Document)
+~ void setNextHandler(Handler)
+}
+
+
+
+work4.chain_of_responsibility.Handler <|.. work4.chain_of_responsibility.AuthorizationHandler
+work4.iterator.Aggregate <|.. work4.iterator.ConcreteAggregate
+work4.chain_of_responsibility.Handler <|.. work4.chain_of_responsibility.FormatHandler
+work4.chain_of_responsibility.Handler <|.. work4.chain_of_responsibility.SubmissionTimeHandler
+work4.chain_of_responsibility.Handler <|.. work4.chain_of_responsibility.ConfidentialityHandler
+work4.iterator.Iterator <|.. work4.iterator.ConcreteIterator
+@enduml
