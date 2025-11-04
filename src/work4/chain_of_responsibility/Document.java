@@ -2,6 +2,9 @@ package work4.chain_of_responsibility;
 
 import java.time.LocalDateTime;
 
+/**
+ * клас, що представляє об'єкт
+ */
 public class Document {
     String name;
     String format;
